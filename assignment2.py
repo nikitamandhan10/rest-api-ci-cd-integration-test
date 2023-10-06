@@ -6,6 +6,7 @@ print('Initializing app')
 
 @app.route('/healthz', methods=['GET'])
 def check_db_connection():
+    print("Inside  get request")
     try:
         con = mysql.connector.connect(host='localhost', user= 'root', password = 'root')
         return create_response(status=200)
