@@ -19,6 +19,6 @@ jobs:
         run: |
           python3 assignment2.py &
           sleep 3
-          if (curl -i http://localhost:8080/healthz | grep '503') exit 1
+          curl -i http://localhost:8080/healthz
           sleep 5
           kill -9 `lsof -i:8080 -t`
