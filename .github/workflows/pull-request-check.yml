@@ -21,3 +21,5 @@ jobs:
           curl -vvvv http://localhost:8080/healthz
           sleep 5
           kill -9 `lsof -i:8080 -t`
+          systemctl status mysql
+          mysql -u root -p root
