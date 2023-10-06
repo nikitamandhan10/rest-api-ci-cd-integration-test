@@ -20,8 +20,10 @@ jobs:
           python3 assignment2.py &
           sleep 3
           CODE=`curl --write-out '%{http_code}' --silent --output /dev/null http://localhost:8080/healthz`
+          echo $CODE
           if [ $CODE!="200" ]
           then
+            echo "Exiting"
             exit 1
           else
             echo "SUCCESS"
