@@ -19,12 +19,20 @@ jobs:
         run: |
           python3 assignment2.py &
           sleep 3
-      - name: Failure
-        if: `curl  -w "%{http_code}" http://localhost:8080/healthz` == '503'
-        run: exit 1
-      - name: Sucsess
-        if: `curl  -w "%{http_code}" http://localhost:8080/healthz` == '200'
-        run: |
-          echo "Sucsess"
-          sleep 5
-          kill -9 `lsof -i:8080 -t`
+          CODE=`curl --write-out '%{http_code}' --silent --output /dev/null http://localhost:8080/healthz`
+          if [ $CODE!="200" ]
+          then
+            exit 1
+          else
+            echo "SUCCESS"
+          fi
+
+#      - name: Failure
+#        if: `curl  -w "%{http_code}" http://localhost:8080/healthz` == '503'
+#        run: exit 1
+#      - name: Sucsess
+#        if: `curl  -w "%{http_code}" http://localhost:8080/healthz` == '200'
+#        run: |
+#          echo "Sucsess"
+#          sleep 5
+#          kill -9 `lsof -i:8080 -t`
