@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/healthz', methods=['GET'])
 def check_db_connection():
     try:
-        con = mysql.connector.connect(host='localhost', user= 'root', password = 'mysql123', auth_plugin='mysql_native_password')
+        con = mysql.connector.connect(host='localhost', user= 'root', password = 'root')
         return create_response(status=200)
     except Exception as e:
         return create_response(status=503)
