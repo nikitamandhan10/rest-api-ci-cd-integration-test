@@ -14,3 +14,8 @@ jobs:
           pip install --upgrade pip
           sudo apt install mysql-server
           pip install -r requirements.txt
+      - name: healthz-check
+          run: |
+            python3 assignment2.py
+            curl -vvvv http://localhost:8080/healthz
+
