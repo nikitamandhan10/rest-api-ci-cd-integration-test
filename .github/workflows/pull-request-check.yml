@@ -16,4 +16,5 @@ jobs:
           pip install -r requirements.txt
       - name: healthz-check
         run: |
-          python3 temp.py
+          python3 assignment2.py
+          echo "Started assignment2"
