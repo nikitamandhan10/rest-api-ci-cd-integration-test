@@ -20,5 +20,6 @@ jobs:
           python3 assignment2.py &
           sleep 3
           curl -i http://localhost:8080/healthz
+          curl -i http://localhost:8080/healthz | grep '200'
           sleep 5
           kill -9 `lsof -i:8080 -t`
