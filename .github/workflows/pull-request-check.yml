@@ -1,4 +1,4 @@
-name: ci
+name: healthz-api-check
 
 on: [pull_request]
 
@@ -7,6 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: hello world
+      - name: enviornment-setup
         run: |
-          echo "Hello World"
+          echo "Enviornment Setup"
+          sudo apt install python3 python3-pip tree -y
+          pip install --upgrade pip
+          ls
+          pwd
+          pip install -r requirements.txt
