@@ -1,0 +1,12 @@
+name: ci
+
+on: [pull_request]
+
+jobs:
+  pull-status-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: hello world
+        run: |
+          echo "Hello World"
