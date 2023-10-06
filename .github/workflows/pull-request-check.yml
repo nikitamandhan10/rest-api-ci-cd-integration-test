@@ -20,10 +20,10 @@ jobs:
           python3 assignment2.py &
           sleep 3
       - name: Failure
-        if: curl  -w "%{http_code}" http://localhost:8080/healthz == '503'
+        if: `curl  -w "%{http_code}" http://localhost:8080/healthz` == '503'
         run: exit 1
       - name: Sucsess
-        if: curl  -w "%{http_code}" http://localhost:8080/healthz == '200'
+        if: `curl  -w "%{http_code}" http://localhost:8080/healthz` == '200'
         run: |
           echo "Sucsess"
           sleep 5
